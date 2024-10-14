@@ -1,4 +1,13 @@
 #include <iostream>
+#include <random>
+
+float random()
+{
+	std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(1.0, 5.0);
+    return distrib(gen);
+}
 
  void addVectors(float *out, float *a, float *b, int n) 
  {
@@ -26,8 +35,8 @@ int main()
 	auto out = new float[N];
 	
 	for(int i = 0; i < N; i++) {
-		a[i] = 1.0f;
-		b[i] = 2.0f;
+		a[i] = random();
+		b[i] = random();
 	}
 
 	float *d_a = nullptr;
